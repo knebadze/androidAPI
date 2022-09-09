@@ -25,10 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $user=User::find(1);
-        // dd($user->roles);
-        dd(Auth::user()->roles);
-        if (auth()->user()->roles == 1) {
+        foreach (Auth::user()->roles as $key => $value) {
+            $roleId = $value->id;
+        }
+        if ($roleId == 1) {
             return view('admin/dashboard');
         }
 
