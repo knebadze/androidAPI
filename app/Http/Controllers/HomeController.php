@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,9 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->role_id == 1) {
+        // $user=User::find(1);
+        // dd($user->roles);
+        dd(Auth::user()->roles);
+        if (auth()->user()->roles == 1) {
             return view('admin/dashboard');
         }
+
         return view('home');
     }
 }
