@@ -84,8 +84,10 @@
       <div class="card-body register-card-body">
         <p class="login-box-msg">Register a new membership</p>
 
-        <form action="../../index.html" method="post">
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
           <div class="input-group mb-3">
+            <input type="number" value="2" name="role_id" hidden>
             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Full Name" required autocomplete="name" autofocus>
 
                 @error('name')
